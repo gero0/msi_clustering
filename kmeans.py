@@ -1,5 +1,7 @@
-import numpy as np;
+import numpy as np
 import random
+
+from sklearn.base import BaseEstimator
 
 """
 Calculates Minkowski distance between two vectors of equal length.
@@ -17,6 +19,8 @@ Returns
 float
     Minkowski distance of order p between vectors
 """
+
+
 def minkowski_distance(x, y, p):
     abs_diffs = abs(x-y)
     power = abs_diffs ** p
@@ -25,56 +29,114 @@ def minkowski_distance(x, y, p):
     return distance
 
 
-"""
-Divides data into clusters using k-Means algorithm
+class KMeans(BaseEstimator):
+    """
+    Implementation of KMeans clustering algorithm
 
-Parameters
-----------
-X : numpy.array
-    A set of observations
-K : int
-    number of clusters
-init_seed: int, default=0
-    Seed used by RNG during initialization (default 0)
-minkowski_p_param: int, default=2
-    p-param to use for calculating Minkowski distance between data points (default 2 - Euclidean distance)
+    Parameters
+    ----------
+    K : int
+        number of clusters
+    init_seed: int, default=0
+        Seed used by RNG during initialization (default 0)
+    p_param: int, default=2
+        p-param to use for calculating Minkowski distance between data points (default 2 - Euclidean distance)
+    """
 
-Returns
--------
-numpy.array
-    Array with labels assigned to observations
-        
-"""
-def kMeansClustering(X, K, init_seed=0, minkowski_p_param=2):
-    #initialization - randomly choose K data points as initial mean values
-    random.seed(a=init_seed)
+    def __init__(self, K, init_seed=0, p_param=2):
+        self.K = K
+        self.init_seed = init_seed
+        self.p_param = p_param
 
-    means = np.array(random.sample(X.tolist(), K))
+    """
+    Divides data into clusters using k-Means algorithm. Calculates centroids.
 
-    labels = np.zeros(len(X))
+    Parameters
+    ----------
+    X : numpy.array
+        A set of observations
 
-    while True:
-        previous_labels = labels[:]
+    Returns
+    -------
+    numpy.array
+        Array with labels assigned to observations
+            
+    """
 
-        #assignment step
+    def fit(self, X):
+        # initialization - randomly choose K data points as initial mean values
+        random.seed(a=self.init_seed)
+
+        self.means = np.array(random.sample(X.tolist(), self.K))
+
+        labels = np.zeros(len(X))
+
+        while True:
+            previous_labels = labels[:]
+
+            # assignment step
+            for sample, (label_id, _) in zip(X, enumerate(labels)):
+                distances = [minkowski_distance(
+                    sample, mean, self.p_param) for mean in self.means]
+                minimum = distances[0]
+
+                for cluster_id, distance in enumerate(distances):
+                    if distance < minimum:
+                        labels[label_id] = cluster_id
+                        minimum = distance
+
+            # update step
+            for (cluster_id, _) in enumerate(self.means):
+                samples = []
+                for (sample, label) in zip(X, labels):
+                    if label == cluster_id:
+                        samples.append(sample)
+
+                self.means[cluster_id] = np.array(samples).mean(axis=0)
+
+            # if assignments didn't change, the algorithm has converged
+            if np.array_equal(previous_labels, labels):
+                return labels
+
+    """
+    Returns centroids calculated by fit method
+
+    Returns
+    -------
+    numpy.array
+        Array with centroids
+            
+    """
+
+    def get_centroids(self):
+        return self.means
+
+    """
+    Assign samples to classes based on centroids calculated by fit method.
+
+    Parameters
+    ----------
+    X : numpy.array
+        A set of observations
+
+    Returns
+    -------
+    numpy.array
+        Array with labels assigned to observations
+            
+    """
+
+    def predict(self, X):
+        labels = np.zeros(len(X))
+
         for sample, (label_id, _) in zip(X, enumerate(labels)):
-            distances = [minkowski_distance(sample, mean, minkowski_p_param) for mean in means]
+            distances = [minkowski_distance(
+                sample, mean, self.p_param) for mean in self.means]
             minimum = distances[0]
 
             for cluster_id, distance in enumerate(distances):
                 if distance < minimum:
                     labels[label_id] = cluster_id
                     minimum = distance
-                
-        #update step
-        for (cluster_id, _) in enumerate(means):
-            samples = []
-            for (sample, label) in zip(X, labels):
-                if label==cluster_id :
-                    samples.append(sample)
-            
-            means[cluster_id] = np.array(samples).mean()
-
-        #if assignments didn't change, the algorithm has converged
-        if np.array_equal(previous_labels, labels):
-            return labels
+        
+        return labels
