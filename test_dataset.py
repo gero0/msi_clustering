@@ -12,7 +12,7 @@ from kmeans import KMeans
 def writearr(file, arr):
     line = ""
     for val in arr:
-        line = line + str(val) + ","
+        line = line + "{:.3f}".format(val) + ","
     line = line + '\n'
     file.write(line)
 
@@ -188,7 +188,7 @@ for dset in datasets:
         file.write("\n" + test + "\n")
         file.write("t-statistic, p-value\n")
         test = tests[test]
-        file.write(str(test[0]) + "," + str(test[1]) + "\n")
+        file.write("{:.3f}".format(test[0]) + "," + "{:.3f}".format(test[1]) + "\n")
         file.write("Better, Significant\n")
         file.write(str(test[2]) + "," + str(test[3]) + "\n")
 
@@ -205,7 +205,7 @@ for dset in datasets:
     file.write("\nOPTICS and DBSCAN noisy samples(in %)\n")
     for clf in scores:
         file.write(clf+'\n')
-        file.write(str(noisy_percent[clf]) + "\n")
+        file.write("{:.3f}".format(noisy_percent[clf]) + "\n")
 
 
     file.close()
