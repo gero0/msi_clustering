@@ -1,0 +1,97 @@
+
+yeast6
+
+Kmean scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.177 & 0.210 & 0.541 \\ \hline 
+2 & 0.281 & 0.150 & 0.500 \\ \hline 
+3 & 0.119 & 0.176 & 0.639 \\ \hline 
+4 & 0.411 & 0.276 & 0.618 \\ \hline 
+5 & 0.272 & 0.013 & 0.501 \\ \hline 
+\end{tabular}
+\end{table}
+
+Kmeans average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.252 (0.100) & 0.165 (0.087) & 0.560 (0.058) \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.116 & 0.011 & 0.860 \\ \hline 
+2 & 0.191 & 0.120 & 0.916 \\ \hline 
+3 & 0.186 & 0.100 & 0.873 \\ \hline 
+4 & 0.155 & 0.010 & 0.867 \\ \hline 
+5 & 0.116 & 0.067 & 0.866 \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.153 (0.033) & 0.062 (0.045) & 0.876 (0.020) \\ \hline 
+\end{tabular}
+\end{table}
+
+Jaccard score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+1.850 & 0.138 \\ \hline
+\end{tabular}
+\end{table}
+
+Homogeneity score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+1.797 & 0.147 \\ \hline
+\end{tabular}
+\end{table}
+
+Rand score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+-9.193 & 0.001 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Score  & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+DBSCAN & 0.319 & 0.004 & 0.917 \\ \hline
+OPTICS & 0.000 & 0.045 & 0.764 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+       & Noisy data (\%) \\ \hline
+DBSCAN & 0.000 \\ \hline
+OPTICS & 89.151 \\ \hline
+\end{tabular}
+\end{table}

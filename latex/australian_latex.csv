@@ -1,0 +1,97 @@
+
+australian
+
+Kmean scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.205 & 0.037 & 0.523 \\ \hline 
+2 & 0.199 & 0.053 & 0.535 \\ \hline 
+3 & 0.158 & 0.137 & 0.585 \\ \hline 
+4 & 0.455 & 0.133 & 0.557 \\ \hline 
+5 & 0.296 & 0.017 & 0.505 \\ \hline 
+\end{tabular}
+\end{table}
+
+Kmeans average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.262 (0.106) & 0.075 (0.050) & 0.541 (0.028) \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.113 & 0.057 & 0.521 \\ \hline 
+2 & 0.138 & 0.053 & 0.521 \\ \hline 
+3 & 0.094 & 0.076 & 0.529 \\ \hline 
+4 & 0.106 & 0.080 & 0.520 \\ \hline 
+5 & 0.250 & 0.069 & 0.526 \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.140 (0.057) & 0.067 (0.011) & 0.524 (0.004) \\ \hline 
+\end{tabular}
+\end{table}
+
+Jaccard score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+2.134 & 0.100 \\ \hline
+\end{tabular}
+\end{table}
+
+Homogeneity score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+0.395 & 0.713 \\ \hline
+\end{tabular}
+\end{table}
+
+Rand score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+1.312 & 0.260 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Score  & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+DBSCAN & 0.000 & 0.000 & 0.505 \\ \hline
+OPTICS & 0.001 & 0.094 & 0.497 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+       & Noisy data (\%) \\ \hline
+DBSCAN & 100.000 \\ \hline
+OPTICS & 57.971 \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,97 @@
+
+popfailures
+
+Kmean scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.343 & 0.007 & 0.516 \\ \hline 
+2 & 0.335 & 0.028 & 0.540 \\ \hline 
+3 & 0.344 & 0.000 & 0.529 \\ \hline 
+4 & 0.351 & 0.004 & 0.545 \\ \hline 
+5 & 0.406 & 0.039 & 0.572 \\ \hline 
+\end{tabular}
+\end{table}
+
+Kmeans average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.356 (0.025) & 0.016 (0.015) & 0.540 (0.018) \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift scores
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+1 & 0.111 & 0.005 & 0.425 \\ \hline 
+2 & 0.079 & 0.065 & 0.394 \\ \hline 
+3 & 0.051 & 0.078 & 0.331 \\ \hline 
+4 & 0.129 & 0.009 & 0.379 \\ \hline 
+5 & 0.113 & 0.037 & 0.384 \\ \hline 
+\end{tabular}
+\end{table}
+
+Meanshift average
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+0.097 (0.028) & 0.039 (0.029) & 0.383 (0.030) \\ \hline 
+\end{tabular}
+\end{table}
+
+Jaccard score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+17.415 & 0.000 \\ \hline
+\end{tabular}
+\end{table}
+
+Homogeneity score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+-1.460 & 0.218 \\ \hline
+\end{tabular}
+\end{table}
+
+Rand score statistics
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+t-statistic & p-value \\ \hline
+8.373 & 0.001 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Score  & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+DBSCAN & 0.000 & 0.000 & 0.844 \\ \hline
+OPTICS & 0.007 & 0.044 & 0.609 \\ \hline
+\end{tabular}
+\end{table}
+
+DBSCAN and OPTICS scores
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+       & Noisy data (\%) \\ \hline
+DBSCAN & 100.000 \\ \hline
+OPTICS & 81.111 \\ \hline
+\end{tabular}
+\end{table}
