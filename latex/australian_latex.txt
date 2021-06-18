@@ -1,9 +1,9 @@
 
 australian
 
-Kmean scores
-
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-KMeansScores}KMeans wyniki}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -15,19 +15,9 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
 \end{tabular}
 \end{table}
 
-Kmeans average
-
-\begin{table}[]
-\begin{tabular}{|l|l|l|}
-\hline
-Jaccard Score & Homogeneity Score & Rand Score \\ \hline
-0.262 (0.106) & 0.075 (0.050) & 0.541 (0.028) \\ \hline 
-\end{tabular}
-\end{table}
-
-Meanshift scores
-
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-MeanshiftScores}Meanshift wyniki}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -39,45 +29,31 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
 \end{tabular}
 \end{table}
 
-Meanshift average
-
-\begin{table}[]
-\begin{tabular}{|l|l|l|}
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-Average}Uœrednione wyniki (z odch. std.))}
+\begin{tabular}{|l|l|l|l|}
 \hline
-Jaccard Score & Homogeneity Score & Rand Score \\ \hline
-0.140 (0.057) & 0.067 (0.011) & 0.524 (0.004) \\ \hline 
+Algorithm & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+KMeans & 0.262 (0.106) & 0.075 (0.050) & 0.541 (0.028) \\ \hline 
+MeanShift & 0.140 (0.057) & 0.067 (0.011) & 0.524 (0.004) \\ \hline 
 \end{tabular}
 \end{table}
 
-Jaccard score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-Stats}Porównanie statystyczne KMeans i MeanShift}
+\begin{tabular}{|l|l|l|l|}
 \hline
-t-statistic & p-value \\ \hline
-2.134 & 0.100 \\ \hline
+& Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+t-statistic & 2.134 & 0.395 & 1.312 \\ \hline
+p-value & 0.100 & 0.713 & 0.260 \\ \hline
 \end{tabular}
 \end{table}
 
-Homogeneity score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\ \hline
-0.395 & 0.713 \\ \hline
-\end{tabular}
-\end{table}
-
-Rand score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\ \hline
-1.312 & 0.260 \\ \hline
-\end{tabular}
-\end{table}
-
-DBSCAN and OPTICS scores
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-Optics&DBScan}Wyniki uzyskane przez DBScan i OPTICS}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Score  & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -86,8 +62,9 @@ OPTICS & 0.001 & 0.094 & 0.497 \\ \hline
 \end{tabular}
 \end{table}
 
-DBSCAN and OPTICS scores
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:australian-Noisy}Procent wzorców oznaczonych jako zaszumione przez DBScan i OPTICS}
 \begin{tabular}{|l|l|}
 \hline
        & Noisy data (\%) \\ \hline

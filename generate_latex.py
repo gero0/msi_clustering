@@ -12,12 +12,19 @@ for dset in datasets:
 
     file.write("\n" + dset + "\n")
     # Kmeans scores
-    file.write("\nKmean scores\n")
+
 
     file.write(
         """
-\\begin{table}[]
-\\begin{tabular}{|l|l|l|l|}
+\\begin{table}[h!]
+\\centering
+""")
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-KMeansScores".format(dset))
+    file.write("}KMeans wyniki}\n")
+
+    file.write("""\\begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
 """)
@@ -28,42 +35,24 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
             fold_id+1, vals[0], vals[1], vals[2]))
 
     file.write(
-        """\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
-    # KMeans avg
-
-    file.write("\nKmeans average\n")
-
-    file.write(
-        """
-\\begin{table}[]
-\\begin{tabular}{|l|l|l|}
-\hline
-Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
-""")
-
-    vals = lines[23].split(',')
-    stds = lines[31].split(',')
-
-    file.write("{} ({}) & {} ({}) & {} ({}) \\\\ \\hline \n".format(
-        vals[0], stds[0], vals[1], stds[1], vals[2], stds[2]))
-
-    file.write(
-        """\end{tabular}
-\end{table}
-"""
-    )
-
+ 
     #Meanshift scores
 
-    file.write("\nMeanshift scores\n")
-
     file.write(
         """
-\\begin{table}[]
+\\begin{table}[h!]
+\\centering
+""")
+
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-MeanshiftScores".format(dset))
+    file.write("}Meanshift wyniki}")
+
+    file.write("""
 \\begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
@@ -75,100 +64,85 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
             fold_id+1, vals[0], vals[1], vals[2]))
 
     file.write(
-        """\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
-    # Meanshift avg
-
-    file.write("\nMeanshift average\n")
+       # Average
 
     file.write(
         """
-\\begin{table}[]
-\\begin{tabular}{|l|l|l|}
+\\begin{table}[h!]
+\\centering
+"""
+    )
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-Average".format(dset))
+    file.write("}Uśrednione wyniki (z odch. std.))}")
+
+    file.write("""
+\\begin{tabular}{|l|l|l|l|}
 \hline
-Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
+Algorithm & Jaccard Score & Homogeneity Score & Rand Score \\\\ \\hline
 """)
+
+    vals = lines[23].split(',')
+    stds = lines[31].split(',')
+
+    file.write("KMeans & {} ({}) & {} ({}) & {} ({}) \\\\ \\hline \n".format(
+        vals[0], stds[0], vals[1], stds[1], vals[2], stds[2]))
 
     vals = lines[26].split(',')
     stds = lines[34].split(',')
 
-    file.write("{} ({}) & {} ({}) & {} ({}) \\\\ \\hline \n".format(
+    file.write("MeanShift & {} ({}) & {} ({}) & {} ({}) \\\\ \\hline \n".format(
         vals[0], stds[0], vals[1], stds[1], vals[2], stds[2]))
 
     file.write(
-        """\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
-    #Jaccard stats
+    #stats
 
-    file.write("\nJaccard score statistics\n")
     file.write(
-"""\\begin{table}[]
-\\begin{tabular}{|l|l|}
+"""\n\\begin{table}[h!]
+\\centering
+""")
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-Stats".format(dset))
+    file.write("}Porównanie statystyczne KMeans i MeanShift}")
+
+    file.write("""
+\\begin{tabular}{|l|l|l|l|}
 \hline
-t-statistic & p-value \\\\ \hline
+& Jaccard Score & Homogeneity Score & Rand Score \\\\ \hline
 """
     )
 
-    vals = lines[40].split(',')
-
-    file.write("{} & {} \\\\ \hline\n".format(vals[0], vals[1].strip()))
+    jacc_vals = lines[40].split(',')
+    homo_vals = lines[46].split(',')
+    rand_vals = lines[52].split(',')
+    
+    file.write("t-statistic & {} & {} & {} \\\\ \hline\n".format(jacc_vals[0], homo_vals[0], rand_vals[0]))
+    file.write("p-value & {} & {} & {} \\\\ \hline\n".format(jacc_vals[1].strip(), homo_vals[1].strip(), rand_vals[1].strip()))
+    
     file.write(
-"""\end{tabular}
-\end{table}
-"""
-    )
-
-    #Homogeneity stats
-
-    file.write("\nHomogeneity score statistics\n")
-    file.write(
-"""\\begin{table}[]
-\\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\\\ \hline
-"""
-    )
-
-    vals = lines[46].split(',')
-
-    file.write("{} & {} \\\\ \hline\n".format(vals[0], vals[1].strip()))
-    file.write(
-"""\end{tabular}
-\end{table}
-"""
-    )
-
-    #Rand stats
-
-    file.write("\nRand score statistics\n")
-    file.write(
-"""\\begin{table}[]
-\\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\\\ \hline
-"""
-    )
-
-    vals = lines[52].split(',')
-
-    file.write("{} & {} \\\\ \hline\n".format(vals[0], vals[1].strip()))
-    file.write(
-"""\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
     #DBSCAN and OPTICS scores
 
-    file.write("\nDBSCAN and OPTICS scores\n")
     file.write(
-"""\\begin{table}[]
+"""\n\\begin{table}[h!]
+\\centering
+""")
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-Optics&DBScan".format(dset))
+    file.write("}Wyniki uzyskane przez DBScan i OPTICS}")
+
+    file.write("""
 \\begin{tabular}{|l|l|l|l|}
 \hline
 Score  & Jaccard Score & Homogeneity Score & Rand Score \\\\ \hline
@@ -181,16 +155,21 @@ Score  & Jaccard Score & Homogeneity Score & Rand Score \\\\ \hline
     file.write("OPTICS & {} & {} & {} \\\\ \hline\n".format(optics_vals[0],optics_vals[1],optics_vals[2]))
 
     file.write(
-"""\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
     #DBSCAN and OPTICS noisy %
 
-    file.write("\nDBSCAN and OPTICS scores\n")
     file.write(
-"""\\begin{table}[]
+"""\n\\begin{table}[h!]
+\\centering
+""")
+
+    file.write("\\caption{\\label{")
+    file.write("tab:{}-Noisy".format(dset))
+    file.write("}Procent wzorców oznaczonych jako zaszumione przez DBScan i OPTICS}")
+
+    file.write("""
 \\begin{tabular}{|l|l|}
 \hline
        & Noisy data (\%) \\\\ \hline
@@ -201,9 +180,7 @@ Score  & Jaccard Score & Homogeneity Score & Rand Score \\\\ \hline
     file.write("OPTICS & {} \\\\ \hline\n".format(lines[71].strip()))
 
     file.write(
-"""\end{tabular}
-\end{table}
-"""
+        "\\end{tabular}\n\\end{table}\n"
     )
 
     file.close()

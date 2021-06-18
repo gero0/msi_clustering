@@ -1,9 +1,9 @@
 
 diabetes
 
-Kmean scores
-
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-KMeansScores}KMeans wyniki}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -15,19 +15,9 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
 \end{tabular}
 \end{table}
 
-Kmeans average
-
-\begin{table}[]
-\begin{tabular}{|l|l|l|}
-\hline
-Jaccard Score & Homogeneity Score & Rand Score \\ \hline
-0.406 (0.031) & 0.019 (0.015) & 0.519 (0.012) \\ \hline 
-\end{tabular}
-\end{table}
-
-Meanshift scores
-
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-MeanshiftScores}Meanshift wyniki}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -39,45 +29,31 @@ Fold & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
 \end{tabular}
 \end{table}
 
-Meanshift average
-
-\begin{table}[]
-\begin{tabular}{|l|l|l|}
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-Average}Uœrednione wyniki (z odch. std.))}
+\begin{tabular}{|l|l|l|l|}
 \hline
-Jaccard Score & Homogeneity Score & Rand Score \\ \hline
-0.198 (0.010) & 0.038 (0.011) & 0.555 (0.020) \\ \hline 
+Algorithm & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+KMeans & 0.406 (0.031) & 0.019 (0.015) & 0.519 (0.012) \\ \hline 
+MeanShift & 0.198 (0.010) & 0.038 (0.011) & 0.555 (0.020) \\ \hline 
 \end{tabular}
 \end{table}
 
-Jaccard score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-Stats}Porównanie statystyczne KMeans i MeanShift}
+\begin{tabular}{|l|l|l|l|}
 \hline
-t-statistic & p-value \\ \hline
-17.004 & 0.000 \\ \hline
+& Jaccard Score & Homogeneity Score & Rand Score \\ \hline
+t-statistic & 17.004 & -2.920 & -2.820 \\ \hline
+p-value & 0.000 & 0.043 & 0.048 \\ \hline
 \end{tabular}
 \end{table}
 
-Homogeneity score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\ \hline
--2.920 & 0.043 \\ \hline
-\end{tabular}
-\end{table}
-
-Rand score statistics
-\begin{table}[]
-\begin{tabular}{|l|l|}
-\hline
-t-statistic & p-value \\ \hline
--2.820 & 0.048 \\ \hline
-\end{tabular}
-\end{table}
-
-DBSCAN and OPTICS scores
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-Optics&DBScan}Wyniki uzyskane przez DBScan i OPTICS}
 \begin{tabular}{|l|l|l|l|}
 \hline
 Score  & Jaccard Score & Homogeneity Score & Rand Score \\ \hline
@@ -86,8 +62,9 @@ OPTICS & 0.001 & 0.076 & 0.491 \\ \hline
 \end{tabular}
 \end{table}
 
-DBSCAN and OPTICS scores
-\begin{table}[]
+\begin{table}[h!]
+\centering
+\caption{\label{tab:diabetes-Noisy}Procent wzorców oznaczonych jako zaszumione przez DBScan i OPTICS}
 \begin{tabular}{|l|l|}
 \hline
        & Noisy data (\%) \\ \hline
