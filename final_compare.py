@@ -34,19 +34,19 @@ for metric in metrics:
     file = open("./stat_compare/" + metric + "_comp.csv", 'w')
     
     file.write("Advantage: \n")
-    file.write("KMeans,Meanshift,DBSCAN,OPTICS\n")
+    file.write("-,KMeans,Meanshift,DBSCAN,OPTICS\n")
 
     for i in range(len(algorithms)):
         file.write(algorithms[i] + "," + str(advantage[i])[1:-1].replace('.', ',') + "\n")
 
     file.write("Significance: \n")
-    file.write("KMeans,Meanshift,DBSCAN,OPTICS\n")
+    file.write("-,KMeans,Meanshift,DBSCAN,OPTICS\n")
 
     for i in range(len(algorithms)):
         file.write(algorithms[i] + "," + str(significance[i])[1:-1].replace('.', ',') + "\n")
 
     file.write("Better: \n")
-    file.write("KMeans,Meanshift,DBSCAN,OPTICS\n")
+    file.write("-,KMeans,Meanshift,DBSCAN,OPTICS\n")
 
     for i in range(len(algorithms)):
         file.write(algorithms[i] + "," + str(better[i])[1:-1].replace('.', ',') + "\n")
