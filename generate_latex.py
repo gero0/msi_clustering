@@ -6,7 +6,7 @@ datasets = ["australian", "banknote", "breastcan",
 for dset in datasets:
 
     scores = open("./results/" + dset + "_results.csv")
-    file = open("./latex/" + dset + "_latex.csv", 'w')
+    file = open("./latex/" + dset + "_latex.txt", 'w')
 
     lines = scores.readlines()
 
